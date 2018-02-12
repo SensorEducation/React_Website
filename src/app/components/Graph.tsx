@@ -5,8 +5,10 @@ class Graph extends React.Component<GraphProps, State> {
     render() {
         return (
 <div>
+    <p>Graph component</p>
     {this.props.date && <p>Date: {this.props.date}</p>}
-    {this.props.datatype && <p>{this.props.datatype}</p>}
+    <br/>
+    {this.props.datatype && <p>Datatype: {this.props.datatype}</p>}
 </div>
         );
     }

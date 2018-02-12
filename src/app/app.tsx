@@ -19,15 +19,16 @@ class App extends React.Component<Props, State> {
 
   getInput = async (event: any) => {
     event.preventDefault();
-    const date = event.target.elements.data.value;
-    const datatype = event.target.elements.dataselector.value;
-    const api_call = await fetch(`placeholder`);
-    const datacall = await api_call.json();
-    if (date && datatype) {
+    const dateval = event.target.elements[0].value;
+    const datatypeval = event.target.elements[1].value;
+    //This doesn't work yet; fix it for AWS
+    //const api_call = await fetch(`placeholder`);
+    //const datacall = await api_call.json();
+    if (dateval && datatypeval) {
       this.setState({
-        date: datacall.date,
-        datatype: datacall.datatype,
-        data: datacall.datatype.data,
+        date: dateval,
+        datatype: datatypeval,
+        data: "",
         error: ""
       });
     }
