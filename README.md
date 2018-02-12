@@ -1,11 +1,11 @@
-# React QuickStart
+# Sensored React
 
-This is a basic React project that has TypeScript, cssnext, and webpack pre-configured so that you don't have to waste time writing boilerplate code before starting your web app.
+This is the React implementation of SensorEd's web interface that is written in Typescript and connects to the cloud database on AWS via a AWS Lambda function written in Go.
 
-## To get started:
-- Clone this project to a local directory of your choosing
-- `cd React-Quickstart` or wherever the project is saved
-- `npm install` to install all package dependencies
-- `npm run start` to start a dev build in webpack-dev-server
-- Write all your .tsx and .pcss files in the `src/app` folder
-- `npm run build` to make a production build that is outputted to the `dist` folder
+## Setup:
+- Clone the project into directory. 
+- CD into it.
+- `npm install` to install the packages required.
+- `npm run build` to create the production build of the webapp.
+- You're all done! Ask one of the members for the API key.
+
