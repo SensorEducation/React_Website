@@ -32,6 +32,6 @@
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1",
-    "react-bootstrap":"^0.32.1"
+    "react-bootstrap": "^0.32.1"
   }
 }

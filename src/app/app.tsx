@@ -1,8 +1,8 @@
-import * as React from 'react'
+import * as React from "react";
 import { render } from 'react-dom';
 import { Props, State } from './utils/utils';
-import Form from './components/form';
-import Graph from './components/graph';
+import Form from './components/Form';
+import Graph from './components/Graph';
 
 
 const styles = require('./app.pcss');

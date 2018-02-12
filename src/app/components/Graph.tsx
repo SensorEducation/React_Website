@@ -1,12 +1,12 @@
 import * as React from "react";
-import { Props, GraphState } from '../utils/Utils';
+import { GraphProps, State } from '../utils/utils';
 
-class Graph extends React.Component<Props, GraphState> {
+class Graph extends React.Component<GraphProps, State> {
     render() {
         return (
 <div>
-    <p>{this.props.date}</p>
-    <p>{this.props.datatype}</p>
+    {this.props.date && <p>Date: {this.props.date}</p>}
+    {this.props.datatype && <p>{this.props.datatype}</p>}
 </div>
         );
     }
