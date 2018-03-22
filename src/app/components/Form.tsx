@@ -7,13 +7,15 @@ class Form extends React.Component<FormProps, DataState>{
     render(){
         return(
         <form onSubmit={this.props.getInput}>
-            <input type = "text" className="FormControl" placeholder="Date" name = "date"/>
+        <input type = "text" className="FormControl" placeholder="MAC Address" name = "mac"/>
+        <br/>
+        <input type = "date"/>
         <br/>
         <select name="dataselector" className="DropdownButton FormControl">
-        <option value="temp">Temperature</option>
-        <option value="noise">Noise</option>
-        <option value="humidity">Humidity</option>
-        <option value="pressure">Pressure</option>
+        <option value="Temperature">Temperature</option>
+        <option value="Noise">Noise</option>
+        <option value="Humidity">Humidity</option>
+        <option value="Pressure">Pressure</option>
         </select>
         <br/>
         <input className="Button Button-Default" type ="submit" value="Enter"/>

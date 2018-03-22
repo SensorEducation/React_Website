@@ -1,23 +1,27 @@
 export interface DataState extends State{
     date: string,
     datatype: string,
-    error: any
+    error: Error
 }
 
 export interface GraphState extends State{
     date: string,
     datatype: string,
     data: number[],
-    error: any
+    error: Error
 }
 
-export interface Props { }
+export interface Props { 
+}
 
-export interface State { }
+export interface State {
+ }
 
 export interface GraphProps extends Props {
-    date: any,
-    datatype: any
+    macAddr: any,
+    date: string,
+    datatype: string,
+    data: any
 }
 
 export interface FormProps extends Props {

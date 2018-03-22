@@ -11,6 +11,7 @@ const styles = require('./app.pcss');
 class App extends React.Component<Props, State> {
 
   state = {
+    macAddr: undefined,
     date: undefined,
     datatype: undefined,
     data: undefined,
@@ -19,13 +20,15 @@ class App extends React.Component<Props, State> {
 
   getInput = async (event: any) => {
     event.preventDefault();
-    const dateval = event.target.elements[0].value;
-    const datatypeval = event.target.elements[1].value;
+    const MACval = event.target.elements[0].value;
+    const dateval = event.target.elements[1].value;
+    const datatypeval = event.target.elements[2].value;
     //This doesn't work yet; fix it for AWS
     //const api_call = await fetch(`placeholder`);
     //const datacall = await api_call.json();
-    if (dateval && datatypeval) {
+    if (MACval && dateval && datatypeval) {
       this.setState({
+        macAddr: MACval,
         date: dateval,
         datatype: datatypeval,
         data: "",
@@ -34,6 +37,7 @@ class App extends React.Component<Props, State> {
     }
     else {
       this.setState({
+        macAddr: undefined,
         date: undefined,
         datatype: undefined,
         data: undefined,
@@ -48,12 +52,15 @@ class App extends React.Component<Props, State> {
 
   render() {
     return (
-      <div>
+      <>
         <h1 className={styles.header}>Hello World!</h1>
         <Form getInput={this.getInput} />
-        <Graph date={this.state.date}
-               datatype={this.state.datatype} />
-      </div>
+        <Graph
+              macAddr = {this.state.macAddr} 
+              date={this.state.date}
+              datatype={this.state.datatype} 
+              data={[346, 24, 6677, 8970970]}/>
+      </>
     );
   }
 }
