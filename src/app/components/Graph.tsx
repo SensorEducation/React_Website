@@ -20,6 +20,7 @@ const Graph = (props: GraphProps) => (
                     }
                 }}
             />}
+        
     </div>
 )
 
