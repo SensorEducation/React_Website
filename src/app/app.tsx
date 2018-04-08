@@ -3,6 +3,8 @@ import { render } from 'react-dom';
 import { Props, State } from './utils/utils';
 import Form from './components/Form';
 import Graph from './components/Graph';
+import axios from 'axios';
+import request from 'request';
 
 
 const styles = require('./app.pcss');
@@ -15,6 +17,7 @@ class App extends React.Component<Props, State> {
     date: undefined,
     datatype: undefined,
     data: undefined,
+    time: undefined,
     error: undefined
   }
 
@@ -23,28 +26,23 @@ class App extends React.Component<Props, State> {
     const macval = event.target.elements[0].value;
     const dateval = event.target.elements[1].value;
     const datatypeval = event.target.elements[2].value;
-    const api_call = await fetch(`https://233vxbsin8.execute-api.us-east-1.amazonaws.com/Prod`), request = {
+    const api_call = await fetch('https://233vxbsin8.execute-api.us-east-1.amazonaws.com/Prod/SensorEd/', {
       method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-  
-      body: JSON.stringify(
-        {
-          mac: macval,
-          date: dateval,
-          datatype: datatypeval,
-        }
-      )
-    }
+      body:
+        JSON.stringify({
+          'mac': macval,
+          'date': dateval,
+          'datatype': datatypeval
+        })
+    })
     const response = await api_call.json();
-    if (macval && dateval && datatypeval && response.data) {
+    if (macval && dateval && datatypeval && response.data && response.time) {
       this.setState({
         macAddr: macval,
         date: dateval,
         datatype: datatypeval,
         data: response.data,
+        time: response.time,
         error: ""
       });
     }
@@ -54,15 +52,13 @@ class App extends React.Component<Props, State> {
         date: undefined,
         datatype: undefined,
         data: undefined,
+        time: undefined,
         error: "Please input values."
       });
     }
 
   }
 
-  getState = {
-
-  };
 
   render() {
     return (
@@ -73,7 +69,8 @@ class App extends React.Component<Props, State> {
               macAddr = {this.state.macAddr} 
               date={this.state.date}
               datatype={this.state.datatype} 
-              data={this.state.data}/>
+              data={this.state.data}
+              time={this.state.time}/>
       </>
     );
   }

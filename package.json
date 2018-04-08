@@ -10,8 +10,10 @@
   "author": "Hans Mok",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "request": "^2.85.0"
   },
   "devDependencies": {
     "react-chartjs-2": "^2.7.0",

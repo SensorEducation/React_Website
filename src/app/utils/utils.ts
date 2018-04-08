@@ -21,7 +21,8 @@ export interface GraphProps extends Props {
     macAddr: any,
     date: string,
     datatype: string,
-    data: any
+    data: any,
+    time: any
 }
 
 export interface FormProps extends Props {

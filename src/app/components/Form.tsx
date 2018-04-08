@@ -13,7 +13,7 @@ class Form extends React.Component<FormProps, DataState>{
         <br/>
         <select name="dataselector" className="DropdownButton FormControl">
         <option value="Temperature">Temperature</option>
-        <option value="Noise">Noise</option>
+        <option value="Gas">Gas</option>
         <option value="Humidity">Humidity</option>
         <option value="Pressure">Pressure</option>
         </select>
