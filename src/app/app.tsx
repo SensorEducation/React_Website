@@ -3,8 +3,6 @@ import { render } from 'react-dom';
 import { Props, State } from './utils/utils';
 import Form from './components/Form';
 import Graph from './components/Graph';
-import axios from 'axios';
-import request from 'request';
 
 
 const styles = require('./app.pcss');
@@ -63,7 +61,7 @@ class App extends React.Component<Props, State> {
   render() {
     return (
       <>
-        <h1 className={styles.header}>Hello World!</h1>
+        <h1 className={styles.header}>Welcome to Sensor Education</h1>
         <Form getInput={this.getInput} />
         <Graph
               macAddr = {this.state.macAddr} 
