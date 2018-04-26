@@ -39,11 +39,6 @@ class Graph extends React.Component<GraphProps, State>{
     render(){
     return(
     <div>
-        <p>Graph component</p>
-        {this.props.date &&
-        <p>{this.props.date}</p>
-        } 
-        {this.props.datatype && <p>{this.props.datatype}</p>}
         {this.props.data && <p>{this.props.data}</p> &&
             <Line
                 data={this.initialState}

@@ -60,7 +60,8 @@ class App extends React.Component<Props, State> {
 
   render() {
     return (
-      <>
+      <div>
+        
         <h1 className={styles.header}>Welcome to Sensor Education</h1>
         <Form getInput={this.getInput} />
         <Graph
@@ -69,7 +70,7 @@ class App extends React.Component<Props, State> {
               datatype={this.state.datatype} 
               data={this.state.data}
               time={this.state.time}/>
-      </>
+      </div>
     );
   }
 }
