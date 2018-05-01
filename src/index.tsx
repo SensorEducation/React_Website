@@ -1,15 +1,9 @@
-import * as React from "react";
+import * as React from 'react';
 import { render } from 'react-dom';
-import { Props, State } from './utils/utils';
 import Form from './components/Form';
 import Graph from './components/Graph';
 
-
-const styles = require('./app.pcss');
-
-
-class App extends React.Component<Props, State> {
-
+class App extends React.Component {
   state = {
     macAddr: undefined,
     date: undefined,
@@ -33,7 +27,9 @@ class App extends React.Component<Props, State> {
           'datatype': datatypeval
         })
     })
+
     const response = await api_call.json();
+
     if (macval && dateval && datatypeval && response.data && response.time) {
       this.setState({
         macAddr: macval,
@@ -43,36 +39,33 @@ class App extends React.Component<Props, State> {
         time: response.time,
         error: ""
       });
-    }
-    else {
+    } else {
       this.setState({
         macAddr: undefined,
         date: undefined,
         datatype: undefined,
         data: undefined,
         time: undefined,
-        error: "Please input values."
+        error: 'Please input values.'
       });
     }
-
   }
-
 
   render() {
     return (
       <div>
-        
-        <h1 className={styles.header}>Welcome to Sensor Education</h1>
+        <h1>Welcome to Sensor Education</h1>
         <Form getInput={this.getInput} />
         <Graph
-              macAddr = {this.state.macAddr} 
-              date={this.state.date}
-              datatype={this.state.datatype} 
-              data={this.state.data}
-              time={this.state.time}/>
+          macAddr={this.state.macAddr}
+          date={this.state.date}
+          datatype={this.state.datatype}
+          data={this.state.data}
+          time={this.state.time}
+        />
       </div>
     );
   }
 }
 
-render(<App />, document.getElementById('app'));
+render(<App/>, document.getElementById('app'));

@@ -1,15 +1,20 @@
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const commonConfig = require('./webpack.common.js');
+const { APP_DIR, commonConfig } = require('./webpack.common.js');
 
 module.exports = webpackMerge(commonConfig, {
-  devtool: 'source-map',
+  mode: 'development',
+
+  entry: [
+    APP_DIR + '/index.tsx'
+  ],
 
   output: {
     filename: 'app.bundle.js'
   },
 
   plugins: [
-    new ExtractTextPlugin('styles.bundle.css')
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
   ]
 });

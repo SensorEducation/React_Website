@@ -1,43 +1,40 @@
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
-const APP_DIR = path.resolve(__dirname, '../src/app');
+exports.APP_DIR = path.resolve(__dirname, '../src');
+exports.BUILD_DIR = path.resolve(__dirname, '../dist');
 
-module.exports = {
-  entry: APP_DIR + '/app.tsx',
-
+exports.commonConfig = {
   resolve: {
-    extensions: ['.js', '.ts','.tsx']
+    extensions: ['.js', '.ts', '.tsx'],
+    modules: [
+      path.resolve('./src'),
+      path.resolve('./node_modules')
+    ]
   },
 
   module: {
-    loaders : [
+    rules: [
       {
         test: /\.tsx?$/,
-        include : APP_DIR,
-        use: 'awesome-typescript-loader'
+        include: [this.APP_DIR],
+        use: 'ts-loader'
       },
       {
-        test: /\.pcss$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            { loader: 'css-loader', options: { modules: 1, importLoaders: 1, sourceMap: true } },
-            { loader: 'postcss-loader', options: { sourceMap: true } },
-          ]
-        }),
+        test: /\.(pdf|png|jpe?g|gif|svg|woff|woff2|ttf|eot)$/,
+        use: 'file-loader?name=assets/[hash].[ext]'
       },
       {
-        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        use: 'file-loader?name=assets/[name].[hash].[ext]'
+        test: /\.ico$/,
+        use: 'file-loader?name=favicon.ico'
       }
     ]
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template:  this.APP_DIR + '/index.html',
+      filename: 'index.html',
     })
   ]
 };
