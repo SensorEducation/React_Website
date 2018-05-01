@@ -5,8 +5,8 @@ interface Props {
   macAddr: string,
   date: string,
   datatype: string,
-  data: any,
-  time: any
+  data: Number[],
+  time: String[]
 }
 
 class Graph extends React.Component<Props>{
